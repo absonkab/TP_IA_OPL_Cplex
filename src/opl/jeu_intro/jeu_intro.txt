@@ -1,0 +1,19 @@
+/***************************************************************
+On considère un graphe à 8 sommets comme celui ci-dessous :
+
+          S2 ----- S5
+        /  | \   / |  \
+       /   |  \ /  |   \
+      /    |  / \  |    \
+     /     | /   \ |     \
+  S1 ---- S3 ----- S6 ----S8      
+     \     | \   / |     /
+      \    |  \ /  |    /
+       \   |  / \  |   /
+        \  | /   \ |  /
+          S4 ----- S7
+		
+Le problème à résoudre consiste à trouver comment  placer tous les entiers allant de 1 à 8 
+dans les différents sommets, de façon à ce que deux sommets voisins dans ce graphe
+ne contiennent jamais 2 entiers consécutifs.
+***************************************************************/

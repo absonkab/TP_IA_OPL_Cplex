@@ -1,0 +1,27 @@
+// Description des données brutes de tâches à réaliser
+
+TachesChantier = {
+//  Code   Description					  Durée		Précédences
+	<"A", "Commande/Livraison cablage",    3, 		{}>,
+	<"B", "Pose cablage",                  8, 		{"A","I"}>,
+	<"C", "Inspection cablage",            1, 		{"B"}>,
+	<"D", "Commande/Livraison plomberie",  3, 		{}>,
+	<"E", "Travaux plomberie exterieure",  2, 		{"H","D"}>,
+	<"F", "Travaux plomberie interieure",  7, 		{"E","I"}>,
+	<"G", "Terrassement",                  1, 		{}>,
+	<"H", "Fondations",                    3, 		{"G"}>,
+	<"ATT", "Attente",                    10, 		{"H"}>,
+	<"I", "Construction ossature",         5, 		{"ATT"}>, //Ajout d'une tache consistant à attendre 10 jours
+	<"J", "Commande/Livraison briques",    6, 		{}>,
+	<"K", "Cloisons",                      8, 		{"I","J"}>,
+	<"L", "Commande/Livraison tuiles",     14,		{}>,
+	<"M", "Charpente",                     5, 		{"I"}>,
+	<"N", "Couverture",                    6, 		{"M","L"}>,
+	<"O", "Revetement interieur",          3, 		{"F","M","C"}>,
+	<"P", "Amenagement interieur",         3, 		{"N","O"}>,
+	<"Q", "Inspection generale",           2, 		{"P","S"}>,
+	<"R", "Nettoyage exterieur",           1, 		{"N","K","O"}>,
+	<"S", "Amenagement exterieur",         3, 		{"R"}>
+};
+
+

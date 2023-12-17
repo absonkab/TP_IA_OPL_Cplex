@@ -1,0 +1,77 @@
+/*****************************************************
+Enoncé du problème :  
+
+Quatre enfants, Anne, Bernard, Claudine et Denis, ayant tous un âge différent 
+(entre 4 et 7 ans), jouent chacun à différents endroits avec des billes de 
+couleur bleue, jaune, noire ou rouge. On sait de plus que : 
+
+1. Denis joue dans le parc et n’a pas 4 ans, contrairement à
+   l’enfant qui a des billes bleues.
+
+2. La fille de 6 ans a des billes jaunes.
+
+3. L’enfant qui joue avec des billes noires est plus âgé que l’enfant qui joue 
+   dans le jardin mais plus jeune que Anne.
+
+4. Anne, qui joue dans sa chambre, a 1 an de plus que l’enfant qui joue dans le salon.
+
+
+(NB : l'énoncé vous est rappelé pour que vous puissiez copier/coller tel quel 
+	  les phrases de l'énoncé dans vos modèles)
+
+*********************************************************/
+
+/* Formalisation en tant que problème de satisfaction de contraintes */
+
+X = {
+   Anne, Bernard, Claudine, Denis, 
+   Bleue, Jaune, Noire, Rouge, 
+   Parc, Jardin, Chambre, Salon, 
+}
+	
+D = d^12 avec d = {4, 5, 6, 7}
+
+// Sens des variables:
+// Anne = 6 signifie que Anne a 6 ans
+// Jaune = 5 signifie que l'enfant qui a les billes jaunes a 5 ans
+// Chambre = Bernard signifie que Bernard joue dans la chambre
+// Noire = Parc signifie que l'enfant ayant les billes noires jouent dans le parc
+
+C =  {
+   // contraintes de différences
+   Anne != Bernard, Anne != Claudine, Anne != Denis,
+   Bernard != Claudine, Bernard != Denis,
+   Claudine != Denis,
+
+   Parc != Jardin, Parc != Chambre, Parc != Salon,
+   Jardin != Chambre, Jardin != Salon,
+   Chambre != Salon,
+
+   Bleue != Jaune, Bleue != Noire, Bleue != Rouge,
+   Jaune != Noire, Jaune != Rouge,
+   Noire != Rouge,
+
+   // contrainte 1: 
+   // Denis joue dans le parc 
+   Denis == Parc,
+   //et n'a pas 4 ans:
+   Denis != 4
+   // contrairement à l’enfant qui a des billes bleues:
+   Bleue == 4,
+
+   // contrainte 2. La fille de 6 ans a des billes jaunes:
+   Jaune == 6,
+   Anne == 6 || Claudine == 6,
+
+   // contrainte 3 L’enfant qui joue avec des billes noires est plus âgé que l’enfant qui joue 
+   // dans le jardin
+   Noire > Jardin,
+   // mais plus jeune que Anne:
+   Noire < Anne,
+
+   // contrainte 4: Anne, qui joue dans sa chambre, 
+   Anne == Chambre,
+   //Anne a 1 an de plus que l’enfant qui joue dans le salon:
+    Anne == Salon + 1,
+
+}
